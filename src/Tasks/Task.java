@@ -1,12 +1,16 @@
-package TZ4;
+package Tasks;
 
 import java.util.Objects;
 
 public class Task {
     private final String name;
-    private final String description;
+    private  String description;
     private int id;
     private TaskStatus status;
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Task(String name, String description, TaskStatus status) {
         this.name = name;

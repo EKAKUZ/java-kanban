@@ -1,4 +1,4 @@
-package TZ4;
+package Tasks;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,17 +64,16 @@ public class TaskManager {
         }
     }
 
-    public void addSubTask(int epicId, SubTask subTask) {
-        Epic epic = getEpicById(epicId);
-        if (subTask != null && epic != null) {
-            subTask.setId(++taskCounter);
-            subTask.setEpicId(epicId);
-            subTasks.put(subTask.getId(), subTask);
-
-            ArrayList<Integer> arraySubTaskId = epic.getArraySubTaskId();
-            arraySubTaskId.add(subTask.getId());
-            epic.setArraySubTaskId(arraySubTaskId);
-            setEpicStatus(epic);
+    public void addSubTask(SubTask subTask) {
+        if (subTask != null) {
+            Epic epic = getEpicById(subTask.getEpicId());
+            if (epic != null) {
+                subTask.setId(++taskCounter);
+                subTasks.put(subTask.getId(), subTask);
+                ArrayList<Integer> arraySubTaskId = epic.getArraySubTaskId();
+                arraySubTaskId.add(subTask.getId());
+                setEpicStatus(epic);
+            }
         }
     }
 
@@ -120,9 +119,9 @@ public class TaskManager {
         if (subTasks.containsKey(id)) {
             Epic epic = getEpicById(getSubTaskById(id).getEpicId());
             ArrayList<Integer> arraySubTaskId= epic.getArraySubTaskId();
-            arraySubTaskId.remove((Integer)id);
-            epic.setArraySubTaskId(arraySubTaskId);
+            arraySubTaskId.remove((Integer) id);
             subTasks.remove(id);
+            setEpicStatus(epic);
         }
     }
 

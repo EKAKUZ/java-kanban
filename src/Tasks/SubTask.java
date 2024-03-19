@@ -1,4 +1,4 @@
-package TZ4;
+package Tasks;
 
 public class SubTask extends Task{
     private int epicId;

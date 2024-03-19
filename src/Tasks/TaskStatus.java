@@ -1,4 +1,4 @@
-package TZ4;
+package Tasks;
 
 public enum TaskStatus {
     NEW,
