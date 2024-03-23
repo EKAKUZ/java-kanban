@@ -10,23 +10,31 @@ public class Epic extends Task{
         this.arraySubTaskId = new ArrayList<>();
     }
 
-    public Epic(String name, String description, int id, ArrayList<Integer> arraySubTasksId) {
-        super(name, description, id, TaskStatus.NEW);
-        this.arraySubTaskId = arraySubTasksId;
-    }
-
     public Epic(String name, String description, int id) {
         super(name, description, id, TaskStatus.NEW);
         this.arraySubTaskId = new ArrayList<>();
     }
 
-    public ArrayList<Integer> getArraySubTaskId() {
-        return arraySubTaskId;
+    ArrayList<Integer> getArraySubTaskId() {
+        return (ArrayList<Integer>) arraySubTaskId.clone();
     }
 
-    protected void setArraySubTaskId(ArrayList<Integer> arraySubTaskId) {
-        this.arraySubTaskId = arraySubTaskId;
+    boolean addSubTaskId(int subTaskId) {
+        if (subTaskId != this.getId()) {
+            arraySubTaskId.add(subTaskId);
+            return true;
+        }
+        return false;
     }
+
+    void removeSubTaskId(int subTaskId) {
+        arraySubTaskId.remove((Integer) subTaskId);
+    }
+
+    void clearArraySubTaskId() {
+        arraySubTaskId.clear();;
+    }
+
 
     @Override
     public String toString() {
