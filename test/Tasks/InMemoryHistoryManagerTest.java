@@ -1,6 +1,6 @@
 package Tasks;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryHistoryManagerTest {
     private static HistoryManager historyManager;
-    @BeforeAll
-    static void createEnvironment() {
+    @BeforeEach
+     void createEnvironment() {
         historyManager = Managers.getDefaultHistory();
     }
     @Test

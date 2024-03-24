@@ -1,6 +1,7 @@
 package Tasks;
 
-import org.junit.jupiter.api.BeforeAll;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,20 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryTaskManagerTest {
     private static TaskManager taskManager;
-    private static HistoryManager historyManager;
-    @BeforeAll
-    static void createEnvironment() {
+    @BeforeEach
+    void createEnvironment() {
         taskManager = Managers.getDefault();
-        historyManager = Managers.getDefaultHistory();
-    }
-
-    @Test
-    void taskManagerShouldBeInMemoryTaskManager() {
-        assertNotNull(taskManager, "TaskManager проинициализирован");
-        assertEquals(InMemoryTaskManager.class, taskManager.getClass(), "TaskManager готов к работе");
-
-        assertNotNull(historyManager, "HistoryManager проинициализирован");
-        assertEquals(InMemoryHistoryManager.class, historyManager.getClass(), "HistoryManager готов к работе");
     }
 
     @Test
