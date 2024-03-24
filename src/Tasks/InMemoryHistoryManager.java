@@ -3,7 +3,7 @@ package Tasks;
 import java.util.ArrayList;
 
 public class InMemoryHistoryManager implements HistoryManager{
-    private ArrayList<Task> historyTasks;
+    private final ArrayList<Task> historyTasks;
     private final int tasksLimit = 10;
 
     public InMemoryHistoryManager () {
