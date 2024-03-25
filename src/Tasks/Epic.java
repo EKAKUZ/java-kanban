@@ -15,6 +15,11 @@ public class Epic extends Task{
         this.arraySubTaskId = new ArrayList<>();
     }
 
+    public Epic(Task epic) {
+        super(epic);
+        this.arraySubTaskId = ((Epic) epic).getArraySubTaskId();
+    }
+
     ArrayList<Integer> getArraySubTaskId() {
         return (ArrayList<Integer>) arraySubTaskId.clone();
     }

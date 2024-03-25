@@ -17,19 +17,11 @@ public class InMemoryHistoryManager implements HistoryManager{
                 historyTasks.remove(task);
             }*/
             if (task.getClass().equals(Task.class)) {
-                Task newTask = new Task(task.getName(), task.getDescription(), task.getId(), task.getStatus());
-                historyTasks.add(newTask);
+                historyTasks.add(new Task(task));
             } else if (task.getClass().equals(SubTask.class)) {
-                SubTask newTask = new SubTask(task.getName(), task.getDescription(), task.getId(), task.getStatus());
-                newTask.setEpicId(((SubTask) task).getEpicId());
-                historyTasks.add(newTask);
+                historyTasks.add(new SubTask(task));
             } else if (task.getClass().equals(Epic.class)) {
-                Epic newTask = new Epic(task.getName(), task.getDescription(), task.getId());
-                ArrayList<Integer> ArraySubTaskId = ((Epic) task).getArraySubTaskId();
-                for (Integer id: ArraySubTaskId) {
-                    newTask.addSubTaskId(id);
-                }
-                historyTasks.add(newTask);
+                historyTasks.add(new Epic(task));
             }
 
             if (historyTasks.size() > tasksLimit) {

@@ -40,6 +40,7 @@ class InMemoryHistoryManagerTest {
 
         Task task2 = new Task("Задача2", "Описание задачи2", 1, TaskStatus.DONE);
         historyManager.add(task2);
+
         assertEquals(history.getLast(), task2, "Task не совпадают");
         assertNotEquals(history.getLast().getDescription(), task1.getDescription(), "Описания Task совпадают");
         assertNotEquals(history.getLast().getStatus(), task1.getStatus(), "Статусы Task совпадают");
@@ -61,7 +62,6 @@ class InMemoryHistoryManagerTest {
         assertEquals(historySecondTask, task1, "SubTask не совпадают");
         assertNotEquals(historyFirstTask.getEpicId(), task1.getEpicId(), "epicId SubTask совпадают");
         assertEquals(historySecondTask.getEpicId(), task1.getEpicId(), "epicId SubTask не совпадают");
-
     }
 
     @Test
@@ -80,6 +80,5 @@ class InMemoryHistoryManagerTest {
 
         assertNotEquals(historyFirstTask.getArraySubTaskId().size(), task1.getArraySubTaskId().size(), "Массивы Id SubTask в Epic совпадают");
         assertArrayEquals(historySecondTask.getArraySubTaskId().toArray(), task1.getArraySubTaskId().toArray(), "Массивы Id SubTask в Epic не совпадают");
-
     }
 }
